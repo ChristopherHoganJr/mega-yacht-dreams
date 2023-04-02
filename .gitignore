@@ -1,0 +1,6 @@
+/clientTS/
+
+/serverTs/
+
+*/.env
+*/node_modules/
