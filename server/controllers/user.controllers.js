@@ -4,7 +4,6 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 require("dotenv").config();
-const secret = process.env.SECRET_KEY;
 
 module.exports = {
   // Register new user
@@ -13,22 +12,23 @@ module.exports = {
     if (exist) {
       res.status(400).json({ error: "user already exists" });
     } else {
-      User.create(req.body)
-        .then((user) => {
-          const userToken = jwt.sign(
-            {
-              id: user._id,
-            },
-            secret
-          );
+      User.create(req.body).then((user) => {
+        const userToken = jwt.sign(
+          {
+            id: user._id,
+          },
+          process.env.SECRET_KEY
+        );
 
-          res
-            .cookie("usertoken", userToken, secret, {
-              httpOnly: true,
-            })
-            .json({ msg: "success!", user: user });
-        })
-        .catch((err) => res.json(err));
+        res
+          .cookie("usertoken", userToken, process.env.SECRET_KEY, {
+            httpOnly: true,
+          })
+          .json({
+            msg: "success!",
+            currentUser: { name: user.name, email: user.email },
+          });
+      });
     }
   },
   login: async (req, res) => {
@@ -54,27 +54,28 @@ module.exports = {
     );
 
     res
-      .cookie("usertoken", userToken, secret, {
+      .cookie("usertoken", userToken, process.env.SECRET_KEY, {
         httpOnly: true,
       })
-      .json({ currentUser: user.name });
+      .json({ name: user.name, email: user.email });
   },
   logout: (req, res) => {
     res.clearCookie("usertoken");
     res.sendStatus(200);
   },
   findOne: (req, res) => {
-    var decoded = jwt.verify(req.cookies.usertoken, secret);
+    var decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
     User.findById(decoded.id)
       .then((user) =>
         res.json({
           name: user.name,
+          email: user.email,
         })
       )
       .catch((error) => res.status(400).json(error));
   },
   findAll: (req, res) => {
-    var decoded = jwt.verify(req.cookies.usertoken, secret);
+    var decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
     console.log(decoded.id);
     User.find()
       .then((users) => res.json(users))

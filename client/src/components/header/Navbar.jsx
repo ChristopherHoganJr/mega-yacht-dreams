@@ -6,9 +6,9 @@ const Navbar = () => {
   const { currentUser } = useContext(UserContext);
   return (
     <nav className='max-w-7xl mx-auto flex justify-between items-center w-full h-[80px] shadow-md px-2'>
-      <a href='/' className='text-xl font-bold'>
+      <Link to={"/"} className='text-xl font-bold'>
         Mega Yacht Dream
-      </a>
+      </Link>
       <div className='flex border-2 border-black rounded-full px-4 py-1 items-center gap-2 shadow-md shadow-grey-200'>
         <div>Date</div>
         <div className='w-[2px] h-[50%] bg-black'></div>
@@ -60,7 +60,7 @@ const Navbar = () => {
             />
           </svg>
         </Link>
-        {!!currentUser && <p>{currentUser.name}</p>}
+        {!!currentUser && <Link to={"/account"}>{currentUser.name}</Link>}
       </div>
     </nav>
   );
