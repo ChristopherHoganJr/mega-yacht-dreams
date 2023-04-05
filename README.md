@@ -9,8 +9,9 @@
     <li>Vite.js</li>
     <li>React.js</li>
     <li>Axios</li>
-     <li>react-router-dom</li>
-      <li>TailwindCSS</li>
+    <li>react-router-dom</li>
+    <li>TailwindCSS</li>
+    <li>HeroIcons</li>
   </ul>
   
  <h2>Back-End Tech Used</h2>
