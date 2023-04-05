@@ -60,8 +60,7 @@ module.exports = {
       .json({ name: user.name, email: user.email });
   },
   logout: (req, res) => {
-    res.clearCookie("usertoken");
-    res.sendStatus(200);
+    res.clearCookie("usertoken").sendStatus(200);
   },
   findOne: (req, res) => {
     var decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);

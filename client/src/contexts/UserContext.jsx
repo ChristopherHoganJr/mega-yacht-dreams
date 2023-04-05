@@ -8,12 +8,14 @@ export const UserContextProvider = ({ children }) => {
   const [ready, setReady] = useState(false);
   useEffect(() => {
     if (!currentUser) {
-      axios.get("/api/user", { withCredentials: true }).then((res) => {
-        setCurrentUser(res.data);
-        setReady(true);
-      });
+      axios
+        .get("/api/user", { withCredentials: true })
+        .then(({ data }) => {
+          setCurrentUser(data);
+          setReady(true);
+        })
+        .catch((error) => setReady(true));
     }
-    console.log(currentUser);
   }, [currentUser]);
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser, ready }}>

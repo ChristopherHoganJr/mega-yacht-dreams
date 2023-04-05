@@ -45,7 +45,9 @@ const Navbar = () => {
             d='M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5'
           />
         </svg>
-        <Link to={"/login"} className='bg-middle text-white rounded-full p-1'>
+        <Link
+          to={currentUser ? "/account" : "/login"}
+          className='bg-middle text-white rounded-full p-1'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
             fill='none'

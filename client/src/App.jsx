@@ -22,6 +22,7 @@ function App() {
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
           <Route path='/account/:slug?' element={<AccountPage />} />
+          <Route path='/account/:slug/:action?' element={<AccountPage />} />
         </Route>
       </Routes>
     </div>
