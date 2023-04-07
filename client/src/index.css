@@ -4,8 +4,9 @@
 
 input[type="text"],
 input[type="password"],
-input[type="email"] {
-  @apply w-full border py-2 px-3 rounded-3xl;
+input[type="email"],
+textarea {
+  @apply w-full border py-2 px-3 rounded-xl;
 }
 button {
   @apply bg-secondary;

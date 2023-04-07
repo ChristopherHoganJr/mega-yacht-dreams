@@ -17,11 +17,13 @@ app.use(
   })
 );
 app.use(express.urlencoded({ extended: true }));
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 require("./config/mongoose.config")(DB);
 
 // routes
 require("./routes/user.routes")(app);
+require("./routes/uploads.routes")(app);
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

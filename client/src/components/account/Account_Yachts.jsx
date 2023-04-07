@@ -7,7 +7,7 @@ const Account_Yachts = () => {
   const { action } = useParams();
   console.log(action);
   return (
-    <div className='text-center pt-5'>
+    <div className=' pt-5 px-8'>
       {action === "new" ? (
         <Account_Yachts_AddForm />
       ) : (
