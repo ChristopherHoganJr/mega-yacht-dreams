@@ -14,6 +14,7 @@ const Account_Yachts_NewPage = () => {
     checkIn: "",
     checkOut: "",
     maxGuests: 1,
+    price: 0.0,
   };
   return (
     <>

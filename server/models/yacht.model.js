@@ -12,6 +12,7 @@ const YachtSchema = new Schema({
   checkIn: String,
   checkOut: String,
   maxGuests: Number,
+  price: Number,
 });
 
 const Yacht = mongoose.model("Yacht", YachtSchema);

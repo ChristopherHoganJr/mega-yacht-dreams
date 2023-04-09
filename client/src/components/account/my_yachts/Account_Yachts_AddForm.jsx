@@ -81,7 +81,7 @@ const Account_Yachts_AddForm = ({ yachtInfo }) => {
         inputValue={formInfo.additionalInfo}
         setInputValue={formChange}
       />
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
         <AddForm_TimeInput
           name={"checkIn"}
           title={"Check In Time"}
@@ -101,6 +101,13 @@ const Account_Yachts_AddForm = ({ yachtInfo }) => {
           title={"Max number of guests"}
           placeholder_text={"50"}
           inputValue={formInfo.maxGuests}
+          setInputValue={formChange}
+        />
+        <AddForm_NumberInput
+          name={"price"}
+          title={"Price per Night"}
+          placeholder_text={"300"}
+          inputValue={formInfo.price}
           setInputValue={formChange}
         />
       </div>

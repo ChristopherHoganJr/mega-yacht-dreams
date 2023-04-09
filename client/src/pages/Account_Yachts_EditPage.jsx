@@ -12,7 +12,7 @@ const Account_Yachts_EditPage = () => {
   useEffect(() => {
     if (!yacht_id) return;
     axios
-      .get("/api/yacht/user/" + yacht_id, { withCredentials: true })
+      .get("/api/yacht/" + yacht_id)
       .then((res) => setYacht(res.data))
       .catch((err) => console.log(err));
   }, [yacht_id]);

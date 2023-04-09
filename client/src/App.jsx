@@ -16,6 +16,8 @@ import Account_VoyagesPage from "./pages/Account_VoyagesPage";
 import Account_YachtsPage from "./pages/Account_YachtsPage";
 import Account_Yachts_NewPage from "./pages/Account_Yachts_NewPage";
 import Account_Yachts_EditPage from "./pages/Account_Yachts_EditPage";
+// yacht pages
+import Yacht_SinglePage from "./pages/Yacht_SinglePage";
 
 axios.defaults.baseURL = "http://localhost:8000";
 
@@ -27,6 +29,7 @@ function App() {
           <Route index element={<IndexPage />} />
           <Route path='/login' element={<LoginPage />} />
           <Route path='/register' element={<RegisterPage />} />
+          <Route path='/yacht/:id' element={<Yacht_SinglePage />} />
         </Route>
         <Route path='/account/' element={<AccountLayout />}>
           <Route index element={<Account_ProfilePage />} />

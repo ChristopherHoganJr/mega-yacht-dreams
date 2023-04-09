@@ -12,7 +12,7 @@ const Account_Yachts_UserYachts = () => {
       .get("/api/yacht/user", { withCredentials: true })
       .then((res) => setYachts(res.data))
       .catch((err) => console.log(err));
-  }, [yachts]);
+  }, []);
 
   return (
     <div className=''>

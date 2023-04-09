@@ -24,6 +24,7 @@ module.exports = {
           checkIn: yachtInfo.checkIn,
           checkOut: yachtInfo.checkOut,
           maxGuests: yachtInfo.maxGuests,
+          price: yachtInfo.price,
         });
         return res.status(200).json({ message: "yacht saved!" });
       })
@@ -32,6 +33,7 @@ module.exports = {
       );
   },
   update: async (req, res) => {
+    console.log(req.body.price);
     const {
       _id,
       owner,
@@ -44,6 +46,7 @@ module.exports = {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     } = req.body;
     let decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
     await Yacht.findById(_id).then((yachtData) => {
@@ -63,6 +66,7 @@ module.exports = {
             checkIn,
             checkOut,
             maxGuests,
+            price,
           },
           {
             new: true,
@@ -84,14 +88,20 @@ module.exports = {
         res.status(400).json({ message: "you must be signed in" })
       );
   },
-  userYacht: async (req, res) => {
-    let decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
-    await Yacht.find({ owner: decoded.id, _id: req.params.yacht_id })
+  getYacht: async (req, res) => {
+    await Yacht.find({ _id: req.params.yacht_id })
       .then((userYacht) => {
         res.status(200).json(userYacht);
       })
       .catch((err) =>
         res.status(400).json({ message: "you must be signed in" })
+      );
+  },
+  getAll: async (req, res) => {
+    await Yacht.find()
+      .then((yachts) => res.status(200).json(yachts))
+      .catch((err) =>
+        res.status(400).json({ message: "could not pull yachts" })
       );
   },
 };
