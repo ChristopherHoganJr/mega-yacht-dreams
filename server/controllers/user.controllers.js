@@ -63,7 +63,7 @@ module.exports = {
     res.clearCookie("usertoken").sendStatus(200);
   },
   findOne: (req, res) => {
-    var decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
+    let decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
     User.findById(decoded.id)
       .then((user) =>
         res.json({
@@ -74,7 +74,7 @@ module.exports = {
       .catch((error) => res.status(400).json(error));
   },
   findAll: (req, res) => {
-    var decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
+    let decoded = jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY);
     console.log(decoded.id);
     User.find()
       .then((users) => res.json(users))

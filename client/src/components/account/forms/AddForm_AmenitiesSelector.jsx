@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 
 const AddForm_AmenitiesSelector = ({ icon, title, formInfo, setFormInfo }) => {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState(formInfo.amenities.includes(title));
 
   const changeHandler = (e) => {
-    setChecked(!checked);
     e.preventDefault();
+    setChecked(!checked);
     if (!checked) {
       setFormInfo({
         ...formInfo,
         amenities: [...formInfo.amenities, title],
       });
-      console.log(formInfo);
     } else {
       let valueIdx = formInfo.amenities.indexOf(title);
       formInfo.amenities.splice(valueIdx, 1);
-      console.log(formInfo);
     }
   };
 
@@ -33,8 +31,7 @@ const AddForm_AmenitiesSelector = ({ icon, title, formInfo, setFormInfo }) => {
         id=''
         onChange={changeHandler}
         checked={checked}
-        className='hidden'
-      />
+        className='hidden'></input>
     </div>
   );
 };

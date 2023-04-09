@@ -9,8 +9,8 @@ const YachtSchema = new Schema({
   description: String,
   amenities: [String],
   additionalInfo: String,
-  checkIn: Number,
-  checkOut: Number,
+  checkIn: String,
+  checkOut: String,
   maxGuests: Number,
 });
 

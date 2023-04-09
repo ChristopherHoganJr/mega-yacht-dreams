@@ -11,7 +11,7 @@ const AddForm_TextArea = ({
       <h3 className='font-semibold text-2xl'>{title}</h3>
       <p className='text-sm'>{description}</p>
       <textarea
-        className='border-black'
+        className='border-black h-[200px]'
         name={name}
         type='text'
         placeholder={placeholder_text}

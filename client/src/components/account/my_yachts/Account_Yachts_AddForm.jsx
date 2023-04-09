@@ -1,38 +1,52 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 // components
-import AddForm_TextInput from "./forms/AddForm_TextInput";
-import AddForm_TextArea from "./forms/AddForm_TextArea";
-import AddForm_ImageInput from "./forms/AddForm_ImageInput";
-import AddForm_Amenities from "./forms/AddForm_Amenities";
-import AddForm_NumberInput from "./forms/AddForm_NumberInput";
-import AddForm_TimeInput from "./forms/AddForm_TimeInput";
+import AddForm_TextInput from "../forms/AddForm_TextInput";
+import AddForm_TextArea from "../forms/AddForm_TextArea";
+import AddForm_ImageInput from "../forms/AddForm_ImageInput";
+import AddForm_Amenities from "../forms/AddForm_Amenities";
+import AddForm_NumberInput from "../forms/AddForm_NumberInput";
+import AddForm_TimeInput from "../forms/AddForm_TimeInput";
 
-const Account_Yachts_AddForm = () => {
-  const [formInfo, setFormInfo] = useState({
-    title: "",
-    address: "",
-    photos: [],
-    description: "",
-    amenities: [],
-    additionalInfo: "",
-    checkIn: "",
-    checkOut: "",
-    maxGuests: 1,
-  });
+const Account_Yachts_AddForm = ({ yachtInfo }) => {
+  const navigate = useNavigate();
+  const [formInfo, setFormInfo] = useState(yachtInfo);
+  const [newItem, setNewItem] = useState(yachtInfo._id);
+
+  const saveYacht = async (e) => {
+    e.preventDefault();
+    if (!newItem) {
+      await axios
+        .post("/api/yacht/new", formInfo, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          navigate("/account/yachts");
+        })
+        .catch((error) => setErrors(error.response.data.error));
+    } else {
+      await axios
+        .put("/api/yacht/update", formInfo, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          navigate("/account/yachts");
+        })
+        .catch((error) => setErrors(error.response.data.error));
+    }
+  };
 
   const formChange = (e) => {
     setFormInfo({
       ...formInfo,
       [e.target.name]: e.target.value,
     });
-    console.log(formInfo);
   };
 
-  console.log(formInfo.photos);
-
   return (
-    <form action='' className='flex flex-col gap-5'>
+    <form action='' className='flex flex-col gap-5' onSubmit={saveYacht}>
       <AddForm_TextInput
         name={"title"}
         title={"Yacht Name"}
@@ -91,9 +105,7 @@ const Account_Yachts_AddForm = () => {
         />
       </div>
 
-      <button className='rounded-full py-2 px-4 text-white'>
-        Add Yacht To Your List{" "}
-      </button>
+      <button className='rounded-full py-2 px-4 text-white'>Save Yacht!</button>
     </form>
   );
 };

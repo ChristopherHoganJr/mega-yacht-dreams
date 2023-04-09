@@ -10,8 +10,7 @@ module.exports = {
       const ext = parts[parts.length - 1];
       const newPath = path + "." + ext;
       fs.renameSync(path, newPath);
-      const newName = newPath.split("/");
-      uploadedFiles.push(newName[1]);
+      uploadedFiles.push(newPath.replace("uploads/", ""));
     }
     res.json(uploadedFiles);
   },

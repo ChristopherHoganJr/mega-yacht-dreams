@@ -1,11 +1,14 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 
 // components
 import AccountHeader_Link from "./AccountHeader_Link";
 
-const AccountHeader = ({ slug }) => {
+const AccountHeader = () => {
+  const { pathname } = useLocation();
+  let slug = pathname.split("/")?.[2];
   return (
-    <div className='w-full flex mt-2 justify-center gap-3'>
+    <div className='w-full flex mt-7 justify-center gap-3'>
       <AccountHeader_Link
         title={"Profile"}
         url={"/account/"}
