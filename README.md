@@ -9,6 +9,7 @@
     <li>Vite.js</li>
     <li>React.js</li>
     <li>Axios</li>
+    <li>date-fns</li>
     <li>react-router-dom</li>
     <li>TailwindCSS</li>
     <li>HeroIcons</li>
@@ -18,11 +19,13 @@
   <ul>
     <li>Bcrypt</li>
     <li>cookie-parser</li>
+    <li>dotenv</li>
+    <li>image-downloader</li>
+    <li>multer</li>
     <li>cors</li>
-     <li>express</li>
-      <li>jsonwebtoken</li>
-  <li>mongoose</li>
-  <li>jsonwebtoken</li>
+    <li>express</li>
+    <li>jsonwebtoken</li>
+    <li>mongoose</li>
   </ul>
 
 <h2>Database</h2>
