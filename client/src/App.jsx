@@ -13,6 +13,7 @@ import RegisterPage from "./pages/RegisterPage";
 // account pages
 import Account_ProfilePage from "./pages/Account_ProfilePage";
 import Account_VoyagesPage from "./pages/Account_VoyagesPage";
+import Account_Voyages_ReservationPage from "./pages/Account_Voyages_ReservationPage";
 import Account_YachtsPage from "./pages/Account_YachtsPage";
 import Account_Yachts_NewPage from "./pages/Account_Yachts_NewPage";
 import Account_Yachts_EditPage from "./pages/Account_Yachts_EditPage";
@@ -34,6 +35,10 @@ function App() {
         <Route path='/account/' element={<AccountLayout />}>
           <Route index element={<Account_ProfilePage />} />
           <Route path='/account/voyages' element={<Account_VoyagesPage />} />
+          <Route
+            path='/account/voyages/:voyage_id'
+            element={<Account_Voyages_ReservationPage />}
+          />
           <Route path='/account/yachts' element={<Account_YachtsPage />} />
           <Route
             path='/account/yachts/new'

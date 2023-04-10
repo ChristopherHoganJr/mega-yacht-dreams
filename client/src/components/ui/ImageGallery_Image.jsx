@@ -5,7 +5,7 @@ const ImageGallery_Image = ({ img_src }) => {
     <img
       src={`http://localhost:8000/uploads/${img_src}`}
       alt='preview image'
-      className='rounded-md w-full h-full  object-cover'
+      className='rounded-md  object-cover'
     />
   );
 };

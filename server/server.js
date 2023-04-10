@@ -24,6 +24,7 @@ require("./config/mongoose.config")(DB);
 // routes
 require("./routes/user.routes")(app);
 require("./routes/yacht.routes")(app);
+require("./routes/reservation.routes")(app);
 require("./routes/uploads.routes")(app);
 
 app.listen(port, () => {
