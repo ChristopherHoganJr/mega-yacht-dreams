@@ -1,7 +1,7 @@
 
   <h1>Mega Yacht Dreams</h1>
-  <p>Project for a high-end luxury mega yacht rental service that provides clients with a breathtaking and unforgettable sailing experience   on the open seas.<p>
-  <p>Similar to Airbnb<p>
+  <p>Mega Yacht Dream is a personal full-stack Airbnb clone project that allows users to rent luxurious yachts for the ultimate vacation experience.<p>
+
 
 
   <h2>Front-End Tech Used</h2>
